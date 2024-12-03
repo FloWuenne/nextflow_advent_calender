@@ -10,18 +10,12 @@ class Door {
     }
 
     checkIfLocked() {
-        // Get current date in Montreal time
+        // This runs in the user's browser, getting the current time
         const montrealDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Montreal' }));
         
-        // Create the door's unlock date in Montreal time
-        // Setting time to 00:00:00 Montreal time on the door's day
+        // Compare with door's date
         const doorDate = new Date(Date.UTC(2024, 11, this.number));
         doorDate.setUTCHours(5, 0, 0, 0); // 00:00 Montreal time (UTC-5)
-        
-        // For testing/debugging
-        console.log(`Door ${this.number}:`);
-        console.log('Montreal current time:', montrealDate.toLocaleString('en-US', { timeZone: 'America/Montreal' }));
-        console.log('Door unlock time:', doorDate.toLocaleString('en-US', { timeZone: 'America/Montreal' }));
         
         return montrealDate < doorDate;
     }
@@ -84,6 +78,47 @@ class Door {
                 <p>A community effort to collect a curated set of analysis pipelines built using Nextflow.</p>
                 <a href="https://nf-co.re" target="_blank" class="info-link">Visit nf-co.re →</a>
             `;
+            
+            infoOverlay.appendChild(infoContent);
+            back.appendChild(infoOverlay);
+        }
+
+        // Add info overlay for day 3 (Docker)
+        if (this.number === 3) {
+            const infoOverlay = document.createElement('div');
+            infoOverlay.className = 'info-overlay';
+            
+            const infoContent = document.createElement('div');
+            infoContent.className = 'info-content';
+            
+            // Check if content is long and needs expansion
+            const content = `
+                <h3>Docker</h3>
+                <p>Nextflow seamlessly integrates with Docker for reproducible, isolated, and efficient workflow execution.</p>
+                <a href="https://www.nextflow.io/docs/latest/container.html#docker" target="_blank" class="info-link">Learn more →</a>
+            `;
+            
+            infoContent.innerHTML = content;
+            
+            // Add click handlers for expansion
+            if (content.length > 200) { // Threshold for "long" content
+                infoContent.classList.add('expandable');
+                infoContent.addEventListener('click', (e) => {
+                    if (!infoOverlay.classList.contains('expanded')) {
+                        infoOverlay.classList.add('expanded');
+                        e.stopPropagation();
+                    }
+                });
+                
+                // Close on click outside or close button
+                document.addEventListener('click', (e) => {
+                    if (infoOverlay.classList.contains('expanded') && 
+                        !infoContent.contains(e.target) || 
+                        e.target.closest('.info-content::after')) {
+                        infoOverlay.classList.remove('expanded');
+                    }
+                });
+            }
             
             infoOverlay.appendChild(infoContent);
             back.appendChild(infoOverlay);
