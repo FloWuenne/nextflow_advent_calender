@@ -14,7 +14,10 @@ class Door {
         const montrealDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Montreal' }));
         
         // Compare with door's date
-        const doorDate = new Date(Date.UTC(2024, 11, this.number));
+        // Create a date for this door in December 2024 (month 11 since months are 0-based)
+        // this.number represents the day (1-24)
+        // Using UTC to ensure consistent date handling across timezones
+        const doorDate = new Date(Date.UTC(2024, 10, this.number));
         doorDate.setUTCHours(5, 0, 0, 0); // 00:00 Montreal time (UTC-5)
         
         return montrealDate < doorDate;
@@ -38,9 +41,69 @@ class Door {
         numberDisplay.textContent = this.number;
         door.appendChild(numberDisplay);
 
+        // Create empty back initially
         const back = document.createElement('div');
         back.className = 'door-back';
         
+        door.appendChild(back);
+        door.appendChild(leftHalf);
+        door.appendChild(rightHalf);
+
+        door.addEventListener('click', () => this.handleClick());
+
+        return door;
+    }
+
+    // New method to load content
+    async loadContent() {
+        const back = this.element.querySelector('.door-back');
+        
+        // Clear any existing content
+        back.innerHTML = '';
+        
+        const infoOverlay = document.createElement('div');
+        infoOverlay.className = 'info-overlay';
+        
+        const infoContent = document.createElement('div');
+        infoContent.className = 'info-content';
+        
+        // Define content based on day number
+        switch(this.number) {
+            case 1:
+                infoContent.innerHTML = `
+                    <h3>Nextflow</h3>
+                    <p>A scalable, portable and reproducible workflow engine for running data-intensive pipelines.</p>
+                    <a href="https://nextflow.io" target="_blank" class="info-link">Visit nextflow.io →</a>
+                `;
+                break;
+            case 2:
+                infoContent.innerHTML = `
+                    <h3>nf-core</h3>
+                    <p>A community effort to collect a curated set of analysis pipelines built using Nextflow.</p>
+                    <a href="https://nf-co.re" target="_blank" class="info-link">Visit nf-co.re →</a>
+                `;
+                break;
+            case 3:
+                infoContent.innerHTML = `
+                    <h3>VS Code Extension</h3>
+                    <p>Nextflow development with code completion, syntax highlighting and error detection.</p>
+                    <a href="https://marketplace.visualstudio.com/items?itemName=nextflow.nextflow" target="_blank" class="info-link">Get it!→</a>
+                `;
+                break;
+            case 4:
+                infoContent.innerHTML = `
+                    <h3>Hello Nextflow Training</h3>
+                    <p>Get started with Nextflow through the Hello Nextflow training series.</p>
+                    <a href="https://training.nextflow.io/hello_nextflow/" target="_blank" class="info-link">Start Learning →</a>
+                `;
+                break;
+            // Add more cases for other days...
+        }
+        
+        infoOverlay.appendChild(infoContent);
+        back.appendChild(infoOverlay);
+
+        // Load image
         const link = document.createElement('a');
         link.href = 'https://nf-co.re';
         link.target = '_blank';
@@ -49,117 +112,13 @@ class Door {
         image.src = `assets/day${this.number}_surprise.png`;
         image.alt = `Surprise for day ${this.number}`;
         
-        // Add info overlay for day 1 (Nextflow)
-        if (this.number === 1) {
-            const infoOverlay = document.createElement('div');
-            infoOverlay.className = 'info-overlay';
-            
-            const infoContent = document.createElement('div');
-            infoContent.className = 'info-content';
-            infoContent.innerHTML = `
-                <h3>Nextflow</h3>
-                <p>A scalable, portable and reproducible workflow engine for running data-intensive pipelines.</p>
-                <a href="https://nextflow.io" target="_blank" class="info-link">Visit nextflow.io →</a>
-            `;
-            
-            infoOverlay.appendChild(infoContent);
-            back.appendChild(infoOverlay);
-        }
-        
-        // Add info overlay for day 2 (nf-core)
-        if (this.number === 2) {
-            const infoOverlay = document.createElement('div');
-            infoOverlay.className = 'info-overlay';
-            
-            const infoContent = document.createElement('div');
-            infoContent.className = 'info-content';
-            infoContent.innerHTML = `
-                <h3>nf-core</h3>
-                <p>A community effort to collect a curated set of analysis pipelines built using Nextflow.</p>
-                <a href="https://nf-co.re" target="_blank" class="info-link">Visit nf-co.re →</a>
-            `;
-            
-            infoOverlay.appendChild(infoContent);
-            back.appendChild(infoOverlay);
-        }
-
-        // Add info overlay for day 3 (Nextflow Language Server)
-        if (this.number === 3) {
-            const infoOverlay = document.createElement('div');
-            infoOverlay.className = 'info-overlay';
-            
-            const infoContent = document.createElement('div');
-            infoContent.className = 'info-content';
-            infoContent.innerHTML = `
-                <h3>VS Code Extension</h3>
-                <p>Nextflow development with code completion, syntax highlighting and error detection.</p>
-                <a href="https://marketplace.visualstudio.com/items?itemName=nextflow.nextflow" target="_blank" class="info-link">Get it!→</a>
-            `;
-            
-            infoOverlay.appendChild(infoContent);
-            back.appendChild(infoOverlay);
-        }
-
-        // Add info overlay for day 4 (Docker)
-        if (this.number === 4) {
-            const infoOverlay = document.createElement('div');
-            infoOverlay.className = 'info-overlay';
-            
-            const infoContent = document.createElement('div');
-            infoContent.className = 'info-content';
-            
-            // Check if content is long and needs expansion
-            const content = `
-                <h3>Docker</h3>
-                <p>Nextflow seamlessly integrates with Docker for reproducible, isolated, and efficient workflow execution.</p>
-                <a href="https://www.nextflow.io/docs/latest/container.html#docker" target="_blank" class="info-link">Learn more →</a>
-            `;
-            
-            infoContent.innerHTML = content;
-            
-            // Add click handlers for expansion
-            if (content.length > 200) { // Threshold for "long" content
-                infoContent.classList.add('expandable');
-                infoContent.addEventListener('click', (e) => {
-                    if (!infoOverlay.classList.contains('expanded')) {
-                        infoOverlay.classList.add('expanded');
-                        e.stopPropagation();
-                    }
-                });
-                
-                // Close on click outside or close button
-                document.addEventListener('click', (e) => {
-                    if (infoOverlay.classList.contains('expanded') && 
-                        !infoContent.contains(e.target) || 
-                        e.target.closest('.info-content::after')) {
-                        infoOverlay.classList.remove('expanded');
-                    }
-                });
-            }
-            
-            infoOverlay.appendChild(infoContent);
-            back.appendChild(infoOverlay);
-        }
-
         image.onerror = () => {
             console.error(`Failed to load image for day ${this.number}`);
             back.textContent = `Image not found for day ${this.number}`;
         };
         
-        image.onload = () => {
-            console.log(`Successfully loaded image for day ${this.number}`);
-        };
-
         link.appendChild(image);
         back.appendChild(link);
-
-        door.appendChild(back);
-        door.appendChild(leftHalf);
-        door.appendChild(rightHalf);
-
-        door.addEventListener('click', () => this.handleClick());
-
-        return door;
     }
 
     handleClick() {
@@ -240,7 +199,10 @@ class Door {
         // Add opening class first for initial animation
         this.element.classList.add('opening');
         
-        // Add sound effect if you want
+        // Load content when door opens
+        this.loadContent();
+        
+        // Add sound effect
         this.playOpenSound();
         
         // Add the open class after a tiny delay for better animation sequencing
