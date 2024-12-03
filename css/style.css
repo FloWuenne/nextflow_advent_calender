@@ -96,4 +96,28 @@ h1::after {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
     padding: 1rem;
-} 
+}
+
+.music-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.music-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: rgba(13, 192, 157, 0.1);
+    transition: all 0.3s ease;
+}
+
+.music-button:hover {
+    background-color: rgba(13, 192, 157, 0.2);
+    transform: scale(1.1);
+}
+  
