@@ -15,7 +15,7 @@ class Door {
         
         // Compare with door's date
         const doorDate = new Date(Date.UTC(2024, 11, this.number));
-        doorDate.setUTCHours(5, 0, 0, 0); // 00:00 Montreal time (UTC-5)
+        doorDate.setUTCHours(4, 0, 0, 0); // 00:00 Montreal time (UTC-5)
         
         return montrealDate < doorDate;
     }
@@ -83,8 +83,25 @@ class Door {
             back.appendChild(infoOverlay);
         }
 
-        // Add info overlay for day 3 (Docker)
+        // Add info overlay for day 3 (Nextflow Language Server)
         if (this.number === 3) {
+            const infoOverlay = document.createElement('div');
+            infoOverlay.className = 'info-overlay';
+            
+            const infoContent = document.createElement('div');
+            infoContent.className = 'info-content';
+            infoContent.innerHTML = `
+                <h3>VS Code Extension</h3>
+                <p>Nextflow development with code completion, syntax highlighting and error detection.</p>
+                <a href="https://marketplace.visualstudio.com/items?itemName=nextflow.nextflow" target="_blank" class="info-link">Get it!→</a>
+            `;
+            
+            infoOverlay.appendChild(infoContent);
+            back.appendChild(infoOverlay);
+        }
+
+        // Add info overlay for day 4 (Docker)
+        if (this.number === 4) {
             const infoOverlay = document.createElement('div');
             infoOverlay.className = 'info-overlay';
             
