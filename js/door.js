@@ -97,6 +97,13 @@ class Door {
                     <a href="https://training.nextflow.io/hello_nextflow/" target="_blank" class="info-link">Start Learning →</a>
                 `;
                 break;
+            case 5:
+                infoContent.innerHTML = `
+                    <h3>nf-test</h3>
+                    <p>Test your production ready Nextflow pipelines in an efficient and automated way.</p>
+                    <a href="https://www.nf-test.com//" target="_blank" class="info-link">Learn about nf-test →</a>
+                `;
+                break;
             // Add more cases for other days...
         }
         
