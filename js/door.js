@@ -17,7 +17,7 @@ class Door {
         // Create a date for this door in December 2024 (month 11 since months are 0-based)
         // this.number represents the day (1-24)
         // Using UTC to ensure consistent date handling across timezones
-        const doorDate = new Date(Date.UTC(2024, 10, this.number));
+        const doorDate = new Date(Date.UTC(2024, 11, this.number));
         doorDate.setUTCHours(5, 0, 0, 0); // 00:00 Montreal time (UTC-5)
         
         return montrealDate < doorDate;
