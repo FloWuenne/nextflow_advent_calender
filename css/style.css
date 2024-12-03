@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #0DC09D;
+    position: relative;
+    text-shadow: 0 0 10px rgba(13, 192, 157, 0.3);
+    animation: snowfall 2s ease-in-out infinite;
+}
+
+h1::before {
+    content: "🎄";
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    animation: treeWiggle 3s ease-in-out infinite;
+}
+
+h1::after {
+    content: "🎅";
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    animation: santaBob 3s ease-in-out infinite;
+}
+
+/* Sparkle effect for text */
+@keyframes snowfall {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px rgba(13, 192, 157, 0.3),
+            0 0 20px rgba(13, 192, 157, 0.2),
+            0 0 30px rgba(13, 192, 157, 0.1);
+    }
+    50% {
+        text-shadow: 
+            0 0 15px rgba(13, 192, 157, 0.4),
+            0 0 25px rgba(13, 192, 157, 0.3),
+            0 0 35px rgba(13, 192, 157, 0.2);
+    }
+}
+
+/* Tree animation */
+@keyframes treeWiggle {
+    0%, 100% { transform: translateY(-50%) rotate(-5deg); }
+    50% { transform: translateY(-50%) rotate(5deg); }
+}
+
+/* Santa animation */
+@keyframes santaBob {
+    0%, 100% { transform: translateY(-60%); }
+    50% { transform: translateY(-40%); }
+}
+
+/* Add responsive adjustments */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+        padding: 0 70px;
+    }
+    
+    h1::before, h1::after {
+        font-size: 2rem;
+    }
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+} 

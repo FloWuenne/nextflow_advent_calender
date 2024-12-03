@@ -1,0 +1,259 @@
+.door {
+    position: relative;
+    background: #2a2a2a;
+    aspect-ratio: 1;
+    cursor: not-allowed;
+    perspective: 1000px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.door:not(.shake) {
+    cursor: pointer;
+}
+
+.door-half {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: #3a3a3a;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    backface-visibility: hidden;
+    border: 2px solid #0DC09D;
+}
+
+.door-left {
+    left: 0;
+    transform-origin: left;
+    border-right: none;
+}
+
+.door-right {
+    right: 0;
+    transform-origin: right;
+    border-left: none;
+}
+
+.door-number {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0DC09D;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Hide the number when door is open */
+.door.open .door-number {
+    opacity: 0;
+}
+
+.door.open .door-left {
+    transform: rotateY(-110deg) perspective(1000px);
+}
+
+.door.open .door-right {
+    transform: rotateY(110deg) perspective(1000px);
+}
+
+.door-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #4a4a4a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    opacity: 0;
+    transform: scale(0.8);
+    overflow: hidden;
+}
+
+.door-back img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.door-back img:hover {
+    transform: scale(1.1) rotate(2deg);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.door.shake {
+    animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* Add a lock icon or different style for locked doors */
+.door-number::before {
+    content: '🔒';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+/* Remove lock icon when door is unlocked */
+.door:not(.locked) .door-number::before {
+    display: none;
+}
+
+/* Styles for the custom message overlay */
+.message-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.message-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.message-box {
+    background: #2a2a2a;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 2px solid #0DC09D;
+    box-shadow: 0 0 20px rgba(13, 192, 157, 0.3);
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    transform: scale(0.9);
+    transition: transform 0.3s ease-in-out;
+}
+
+.message-overlay.show .message-box {
+    transform: scale(1);
+}
+
+.message-box h3 {
+    color: #0DC09D;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.message-box p {
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.message-box button {
+    background: #0DC09D;
+    color: #1a1a1a;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+.message-box button:hover {
+    background: #0fa885;
+    transform: scale(1.05);
+}
+
+@keyframes doorGlow {
+    0% { box-shadow: 0 0 0 rgba(13, 192, 157, 0); }
+    50% { box-shadow: 0 0 30px rgba(13, 192, 157, 0.6); }
+    100% { box-shadow: 0 0 0 rgba(13, 192, 157, 0); }
+}
+
+@keyframes contentReveal {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.door.open {
+    animation: doorGlow 1.2s ease-in-out;
+}
+
+.door.open .door-back {
+    animation: contentReveal 0.5s ease-out 0.3s forwards;
+}
+
+/* Add these new styles for the info overlay */
+.info-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    padding: 1rem;
+}
+
+.door-back:hover .info-overlay {
+    opacity: 1;
+}
+
+.info-content {
+    text-align: center;
+    color: #fff;
+    transform: translateY(20px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.door-back:hover .info-content {
+    transform: translateY(0);
+}
+
+.info-content h3 {
+    color: #0DC09D;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-content p {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+    color: #fff;
+}
+
+/* Add these styles for the info link */
+.info-content .info-link {
+    display: inline-block;
+    color: #0DC09D;
+    text-decoration: none;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #0DC09D;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+.info-content .info-link:hover {
+    background: #0DC09D;
+    color: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(13, 192, 157, 0.3);
+} 
