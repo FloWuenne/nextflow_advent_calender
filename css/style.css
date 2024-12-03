@@ -77,10 +77,16 @@ h1::after {
 @media (max-width: 600px) {
     h1 {
         font-size: 1.5rem;
-        padding: 0 70px;
+        padding: 0 40px;
     }
     
-    h1::before, h1::after {
+    h1::before {
+        left: -30px;
+        font-size: 2rem;
+    }
+
+    h1::after {
+        right: -30px;
         font-size: 2rem;
     }
 }
