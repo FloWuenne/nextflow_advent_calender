@@ -15,7 +15,7 @@ class Door {
         
         // Compare with door's date
         const doorDate = new Date(Date.UTC(2024, 11, this.number));
-        doorDate.setUTCHours(4, 0, 0, 0); // 00:00 Montreal time (UTC-5)
+        doorDate.setUTCHours(5, 0, 0, 0); // 00:00 Montreal time (UTC-5)
         
         return montrealDate < doorDate;
     }
