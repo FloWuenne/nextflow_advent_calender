@@ -113,7 +113,14 @@ class Door {
                 infoContent.innerHTML = `
                     <h3>nf-test</h3>
                     <p>Test your production ready Nextflow pipelines in an efficient and automated way.</p>
-                    <a href="https://www.nf-test.com//" target="_blank" class="info-link">Learn about nf-test →</a>
+                    <a href="https://www.nf-test.com/" target="_blank" class="info-link">Learn about nf-test →</a>
+                `;
+                break;
+            case 6:
+                infoContent.innerHTML = `
+                    <h3>Ambassadors</h3>
+                    <p>Nextflow ambassadors are passionate community advocates who help spread the joy of Nextflow.</p>
+                    <a href="https://www.nextflow.io/ambassadors.html" target="_blank" class="info-link">Join ambassadors!</a>
                 `;
                 break;
             // Add more cases for other days...
