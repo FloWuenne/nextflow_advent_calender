@@ -2,21 +2,33 @@ class Door {
     constructor(number) {
         this.number = number;
         this.element = this.createElement();
+        this.lastCheck = 0;
         this.isLocked = this.checkIfLocked();
         if (this.isLocked) {
             this.element.classList.add('locked');
         }
         this.createMessageOverlay();
+        
+        setInterval(() => {
+            if (Date.now() - this.lastCheck >= 30000) {
+                const currentLockStatus = this.checkIfLocked();
+                if (currentLockStatus !== this.isLocked) {
+                    this.isLocked = currentLockStatus;
+                    if (this.isLocked) {
+                        this.element.classList.add('locked');
+                    } else {
+                        this.element.classList.remove('locked');
+                    }
+                }
+                this.lastCheck = Date.now();
+            }
+        }, 30000);
     }
 
     checkIfLocked() {
-        // This runs in the user's browser, getting the current time
+        this.lastCheck = Date.now();
         const montrealDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Montreal' }));
         
-        // Compare with door's date
-        // Create a date for this door in December 2024 (month 11 since months are 0-based)
-        // this.number represents the day (1-24)
-        // Using UTC to ensure consistent date handling across timezones
         const doorDate = new Date(Date.UTC(2024, 11, this.number));
         doorDate.setUTCHours(5, 0, 0, 0); // 00:00 Montreal time (UTC-5)
         
