@@ -29,7 +29,7 @@ class Door {
         this.lastCheck = Date.now();
         const montrealDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Montreal' }));
         
-        const doorDate = new Date(Date.UTC(2024, 11, this.number));
+        const doorDate = new Date(Date.UTC(2024, 10, this.number));
         doorDate.setUTCHours(5, 0, 0, 0); // 00:00 Montreal time (UTC-5)
         
         return montrealDate < doorDate;
@@ -121,6 +121,13 @@ class Door {
                     <h3>Ambassadors</h3>
                     <p>Nextflow ambassadors are passionate community advocates who help spread the joy of Nextflow.</p>
                     <a href="https://www.nextflow.io/ambassadors.html" target="_blank" class="info-link">Join ambassadors!</a>
+                `;
+                break;
+            case 7:
+                infoContent.innerHTML = `
+                    <h3>OSSF</h3>
+                    <p>The Open Science Software Foundation is a non-profit foundation supporting open source scientific tools.</p>
+                    <a href="https://openscience.software/" target="_blank" class="info-link">Learn More →</a>
                 `;
                 break;
             // Add more cases for other days...
