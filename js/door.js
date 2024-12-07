@@ -29,6 +29,7 @@ class Door {
         this.lastCheck = Date.now();
         const montrealDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Montreal' }));
         
+        
         const doorDate = new Date(Date.UTC(2024, 11, this.number));
         doorDate.setUTCHours(5, 0, 0, 0); // 00:00 Montreal time (UTC-5)
         
@@ -112,7 +113,7 @@ class Door {
             case 5:
                 infoContent.innerHTML = `
                     <h3>nf-test</h3>
-                    <p>Test your production ready Nextflow pipelines in an efficient and automated way.</p>
+                    <p>Test your Nextflow processes and pipelines in an efficient and automated way.</p>
                     <a href="https://www.nf-test.com/" target="_blank" class="info-link">Learn about nf-test →</a>
                 `;
                 break;
@@ -126,8 +127,29 @@ class Door {
             case 7:
                 infoContent.innerHTML = `
                     <h3>OSSF</h3>
-                    <p>The Open Science Software Foundation is a non-profit foundation supporting open source scientific tools.</p>
+                    <p>The Open Source Science Foundation empowers scientists through innovative open source.</p>
                     <a href="https://openscience.software/" target="_blank" class="info-link">Learn More →</a>
+                `;
+                break;
+            case 8:
+                infoContent.innerHTML = `
+                    <h3>Connectgame</h3>
+                    <p>Connect 3 or more items from the Nextflow universe to win in this fun game!</p>
+                    <a href="https://maxulysse.github.io/games/connectgame/" target="_blank" class="info-link">Play now!→</a>
+                `;
+                break;
+            case 9:
+                infoContent.innerHTML = `
+                    <h3>Hackathons</h3>
+                    <p>Join one of the nf-core hackathons and be a part of this amazing Nextflow community!</p>
+                    <a href="https://www.youtube.com/watch?app=desktop&v=Riiz_lWVTgE " target="_blank" class="info-link">Learn more→</a>
+                `;
+                break;
+            case 10:
+                infoContent.innerHTML = `
+                    <h3>Coming Soon</h3>
+                    <p>Stay tuned for another exciting Nextflow surprise!</p>
+                    <a href="#" target="_blank" class="info-link">Learn More →</a>
                 `;
                 break;
             // Add more cases for other days...
