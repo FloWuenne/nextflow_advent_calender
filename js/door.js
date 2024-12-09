@@ -147,9 +147,9 @@ class Door {
                 break;
             case 10:
                 infoContent.innerHTML = `
-                    <h3>Coming Soon</h3>
-                    <p>Stay tuned for another exciting Nextflow surprise!</p>
-                    <a href="#" target="_blank" class="info-link">Learn More →</a>
+                    <h3>nf-core/sarek</h3>
+                    <p>A Nextflow pipeline for germline and somatic variant detection in WGS and targeted sequencing data.</p>
+                    <a href="https://nf-co.re/sarek" target="_blank" class="info-link">Learn More →</a>
                 `;
                 break;
             // Add more cases for other days...
