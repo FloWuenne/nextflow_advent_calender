@@ -97,22 +97,18 @@ document.addEventListener('DOMContentLoaded', () => {
         isMusicPlaying = !isMusicPlaying;
     });
 
-    // Add secret sequence detector
-    const sequence = ['tree', 'tree', 'santa', 'tree', 'santa'];
-    let currentSequence = [];
-    let secretRevealed = false;
+    // Modified sequence handling to be more obscure
+    const _s = atob('dHJlZSx0cmVlLHNhbnRhLHRyZWUsc2FudGE='); // Encoded sequence
+    let _c = [];
+    let _r = false;
 
     // Add to top of file with other state variables
-    let sequenceTimeout;
-
-    // Add click handlers to emojis
-    const treeEmoji = document.querySelector('h1').querySelector(':before');
-    const santaEmoji = document.querySelector('h1').querySelector(':after');
+    let _t;
 
     // Add sequence progress indicator
     const progressContainer = document.createElement('div');
     progressContainer.className = 'sequence-progress';
-    for (let i = 0; i < sequence.length; i++) {
+    for (let i = 0; i < _s.split(',').length; i++) {
         const dot = document.createElement('div');
         dot.className = 'sequence-dot';
         progressContainer.appendChild(dot);
@@ -124,21 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const clickX = e.clientX - rect.left;
         const elementWidth = rect.width;
         
-        // Get the pseudo-elements
-        const styles = window.getComputedStyle(e.target);
-        const treeElement = e.target.querySelector(':before');
-        const santaElement = e.target.querySelector(':after');
-        
         if (clickX < elementWidth * 0.2) {
-            currentSequence.push('tree');
-            // Add animation class to tree
+            _c.push(atob('dHJlZQ==')); // Encoded 'tree'
             e.target.style.setProperty('--tree-animation', 'emojiSquish 0.4s ease-out');
             setTimeout(() => {
                 e.target.style.setProperty('--tree-animation', 'treeWiggle 3s ease-in-out infinite');
             }, 400);
         } else if (clickX > elementWidth * 0.8) {
-            currentSequence.push('santa');
-            // Add animation class to santa
+            _c.push(atob('c2FudGE=')); // Encoded 'santa'
             e.target.style.setProperty('--santa-animation', 'emojiSquishSanta 0.4s ease-out');
             setTimeout(() => {
                 e.target.style.setProperty('--santa-animation', 'santaBob 3s ease-in-out infinite');
@@ -146,24 +135,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Update sequence checking
-        if (currentSequence.length === sequence.length) {
-            if (JSON.stringify(currentSequence) === JSON.stringify(sequence) && !secretRevealed) {
+        if (_c.length === _s.split(',').length) {
+            if (_c.join(',') === _s && !_r) {
                 revealSecret();
-                secretRevealed = true;
+                _r = true;
             } else {
-                // Visual feedback for wrong sequence
                 const header = document.querySelector('h1');
                 header.classList.add('sequence-error');
                 setTimeout(() => header.classList.remove('sequence-error'), 500);
             }
-            currentSequence = [];
+            _c = [];
         }
 
         // Update progress dots
         progressContainer.classList.add('active');
         const dots = progressContainer.querySelectorAll('.sequence-dot');
         dots.forEach((dot, index) => {
-            if (index < currentSequence.length) {
+            if (index < _c.length) {
                 dot.classList.add('filled');
             } else {
                 dot.classList.remove('filled');
@@ -171,9 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Clear progress after inactivity
-        clearTimeout(sequenceTimeout);
-        sequenceTimeout = setTimeout(() => {
-            currentSequence = [];
+        clearTimeout(_t);
+        _t = setTimeout(() => {
+            _c = [];
             progressContainer.classList.remove('active');
             dots.forEach(dot => dot.classList.remove('filled'));
         }, 3000);
