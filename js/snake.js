@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     const scoreElement = document.getElementById('scoreValue');
 
-    // Set canvas size and initial background
-    canvas.width = 600;
-    canvas.height = 400;
+    // Set canvas size to be perfectly divisible by grid size
+    canvas.width = 600;  // 600/30 = 20 cells
+    canvas.height = 390;  // 390/30 = 13 cells (changed from 400 to make it perfectly divisible)
 
     // Add background pattern function
     function drawBackground() {
@@ -35,9 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Game constants
-    const gridSize = 30;  // Increased grid size
+    const gridSize = 30;  // Keep grid size the same
     const tickRate = 120;
-    const iconSize = 40;  // Size for both snake and food icons
+    const iconSize = 28;  // Increase from 20 by 40% (20 * 1.4 = 28)
     
     // Create SVG images
     const snakeHead = new Image();
@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function drawFood() {
-        // Center the food icon in its grid cell
         const x = food.x * gridSize + (gridSize - iconSize)/2;
         const y = food.y * gridSize + (gridSize - iconSize)/2;
         ctx.drawImage(processIcon, x, y, iconSize, iconSize);
@@ -209,8 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getRandomPosition() {
         return {
-            x: Math.floor(Math.random() * (canvas.width / gridSize)),
-            y: Math.floor(Math.random() * (canvas.height / gridSize))
+            x: Math.floor(Math.random() * (canvas.width/gridSize - 2)) + 1,
+            y: Math.floor(Math.random() * (canvas.height/gridSize - 2)) + 1
         };
     }
 

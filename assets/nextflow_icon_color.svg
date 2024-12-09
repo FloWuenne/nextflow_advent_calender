@@ -1,12 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generator: Adobe Illustrator 28.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
-<style type="text/css">
+
+<svg
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 500 500"
+   style="enable-background:new 0 0 500 500;"
+   xml:space="preserve"
+   sodipodi:docname="nextflow_icon_color.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs4" /><sodipodi:namedview
+   id="namedview4"
+   pagecolor="#505050"
+   bordercolor="#eeeeee"
+   borderopacity="1"
+   inkscape:showpageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#505050"
+   inkscape:zoom="0.472"
+   inkscape:cx="250"
+   inkscape:cy="256.35593"
+   inkscape:window-width="1312"
+   inkscape:window-height="449"
+   inkscape:window-x="0"
+   inkscape:window-y="230"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Layer_1" />
+<style
+   type="text/css"
+   id="style1">
 	.st0{fill:#0DC09D;}
 </style>
-<path class="st0" d="M124.5,171.5c39.4,2.6,71.1,34.3,73.5,73.8h46.1c-2.6-65-54.7-117.2-119.6-119.9V171.5z"/>
-<path class="st0" d="M198.3,255.8c-2.6,39.4-34.3,71.1-73.8,73.5v46.1c65-2.6,117.2-54.7,119.9-119.6H198.3z"/>
-<path class="st0" d="M300.7,245c2.6-39.5,34.3-71.1,73.8-73.5v-46.1c-65,2.6-117.2,54.7-119.9,119.6H300.7z"/>
-<path class="st0" d="M374.5,329.4c-39.4-2.6-71.1-34.3-73.5-73.8h-46.1c2.6,65,54.7,117.2,119.6,119.9V329.4z"/>
+<path
+   class="st0"
+   d="m 16.502521,100.61389 c 74.78481,4.93504 134.954309,65.10453 139.509739,140.07915 h 87.50202 C 238.57924,117.31709 139.68867,18.236711 16.502521,13.111864 Z"
+   id="path1"
+   style="stroke-width:1.89809" />
+<path
+   class="st0"
+   d="M 156.58168,260.62301 C 151.64664,335.40782 91.47714,395.57733 16.502521,400.13274 v 87.50202 C 139.87847,482.69973 238.95885,383.80915 244.0837,260.62301 Z"
+   id="path2"
+   style="stroke-width:1.89809" />
+<path
+   class="st0"
+   d="M 350.94626,240.12362 C 355.8813,165.149 416.05081,105.16931 491.02542,100.61389 V 13.111864 C 367.64948,18.046903 268.56909,116.93748 263.44424,240.12362 Z"
+   id="path3"
+   style="stroke-width:1.89809" />
+<path
+   class="st0"
+   d="M 491.02542,400.32255 C 416.24062,395.38752 356.07111,335.21801 351.51569,260.24339 h -87.50203 c 4.93504,123.37595 103.82561,222.45634 227.01176,227.58119 z"
+   id="path4"
+   style="stroke-width:1.89809" />
 </svg>
