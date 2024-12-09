@@ -257,19 +257,9 @@ class Door {
         // Load content when door opens
         this.loadContent();
         
-        // Add sound effect
-        this.playOpenSound();
-        
         // Add the open class after a tiny delay for better animation sequencing
         setTimeout(() => {
             this.element.classList.add('open');
         }, 50);
-    }
-
-    playOpenSound() {
-        // Optional: Add a satisfying sound effect when door opens
-        const openSound = new Audio('assets/door-open.mp3'); // You'll need to add this sound file
-        openSound.volume = 0.3;
-        openSound.play().catch(err => console.log('Sound not played:', err));
     }
 } 
