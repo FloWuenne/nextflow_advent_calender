@@ -152,6 +152,27 @@ class Door {
                     <a href="https://nf-co.re/sarek" target="_blank" class="info-link">Learn More →</a>
                 `;
                 break;
+            case 11:
+                infoContent.innerHTML = `
+                    <h3>nf-schema</h3>
+                    <p>A Nextflow plugin to work with validation of pipeline parameters and sample sheets..</p>
+                    <a href="https://nextflow-io.github.io/nf-schema/latest/" target="_blank" class="info-link">Learn More →</a>
+                `;
+                break;
+            case 12:
+                infoContent.innerHTML = `
+                    <h3>Nextflow Summit</h3>
+                    <p>Twice a year the Nextflow community gathers in Boston and Barcelona respectively, to share knowledge and experiences.</p>
+                    <a href="https://summit.nextflow.io/preregister-2025/" target="_blank" class="info-link">Learn More →</a>
+                `;
+                break;
+            case 13:
+                infoContent.innerHTML = `
+                    <h3>nf-core/bytesize</h3>
+                    <p>Short, focused talks about Nextflow and nf-core tools and pipelines, hosted every other Tuesday.</p>
+                    <a href="https://nf-co.re/events/bytesize" target="_blank" class="info-link">Watch Talks →</a>
+                `;
+                break;
             // Add more cases for other days...
         }
         
