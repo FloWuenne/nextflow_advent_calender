@@ -162,7 +162,7 @@ class Door {
             case 12:
                 infoContent.innerHTML = `
                     <h3>Nextflow Summit</h3>
-                    <p>Twice a year the Nextflow community gathers in Boston and Barcelona respectively, to share knowledge and experiences.</p>
+                    <p>Attend a Nextflow summit and learn about the newest developments.</p>
                     <a href="https://summit.nextflow.io/preregister-2025/" target="_blank" class="info-link">Learn More →</a>
                 `;
                 break;
