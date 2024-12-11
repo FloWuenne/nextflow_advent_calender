@@ -168,7 +168,7 @@ class Door {
                 break;
             case 13:
                 infoContent.innerHTML = `
-                    <h3>nf-core/bytesize</h3>
+                    <h3>bytesize</h3>
                     <p>Short, focused talks about Nextflow and nf-core tools and pipelines, hosted every other Tuesday.</p>
                     <a href="https://nf-co.re/events/bytesize" target="_blank" class="info-link">Watch Talks →</a>
                 `;
