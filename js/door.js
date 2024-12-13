@@ -173,6 +173,28 @@ class Door {
                     <a href="https://nf-co.re/events/bytesize" target="_blank" class="info-link">Watch Talks →</a>
                 `;
                 break;
+            case 14:
+                infoContent.innerHTML = `
+                    <h3>Bactopia</h3>
+                    <p>A flexible pipeline for complete analysis of bacterial genomes.</p>
+                    <a href="https://bactopia.github.io/" target="_blank" class="info-link">Learn More →</a>
+                `;
+                break;
+            case 15:
+                infoContent.innerHTML = `
+                    <h3>Santa's Pipeline Puzzle</h3>
+                    <p>Santa needs help remembering his pipeline's name! Can you solve the riddle?</p>
+                    <a href="secret2.html" target="_blank" class="info-link">Help Santa →</a>
+                `;
+                break;
+            case 16:
+                infoContent.innerHTML = `
+                    <h3>nf-core/
+                    taxprofiler</h3>
+                    <p>Taxonomic profiling of metagenomic samples</p>
+                    <a href="https://nf-co.re/taxprofiler" target="_blank" class="info-link">Learn More →</a>
+                `;
+                break;
             // Add more cases for other days...
         }
         

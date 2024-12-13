@@ -254,4 +254,17 @@ h1::after {
     animation: errorShake 0.5s ease-in-out;
     color: #ff4444;
 }
+
+.secret-container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.reindeer-herd {
+    font-size: 2rem;
+    line-height: 1.5;
+    margin: 2rem 0;
+}
   
