@@ -183,7 +183,7 @@ class Door {
             case 15:
                 infoContent.innerHTML = `
                     <h3>Santa's Pipeline Puzzle</h3>
-                    <p>Santa needs help remembering his pipeline's name! Can you solve the riddle?</p>
+                    <p>Santa has trouble running his present delivery pipeline! Can you help him?</p>
                     <a href="secret2.html" target="_blank" class="info-link">Help Santa →</a>
                 `;
                 break;
