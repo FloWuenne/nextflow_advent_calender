@@ -40,6 +40,7 @@ process DELIVER_PRESENTS {
     val status
 
     script:
+    def encoded_key = "TWVycnlOZXh0Q2hyaXN0bWFz"
     """
     echo "🎅 Ho ho ho! Santa is delivering presents!"
     echo "🎄 Checking the naughty/nice list..."
@@ -47,7 +48,7 @@ process DELIVER_PRESENTS {
     echo "🌟 Running nextflow magic algorithms..."
     echo "🦌 Reindeer power optimization complete!"
     echo "🎅 Here's your special Nextflow present:"
-    echo "🎁 The next secret key is: MerryNextChristmas"
+    echo "🎁 The next secret key is: \$(echo "${encoded_key}" | base64 -d)"
     """
 }
 
