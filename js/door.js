@@ -30,7 +30,7 @@ class Door {
         const montrealDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Montreal' }));
         
         
-        const doorDate = new Date(Date.UTC(2024, 11, this.number));
+        const doorDate = new Date(Date.UTC(2024, 10, this.number));
         doorDate.setUTCHours(5, 0, 0, 0); // 00:00 Montreal time (UTC-5)
         
         return montrealDate < doorDate;

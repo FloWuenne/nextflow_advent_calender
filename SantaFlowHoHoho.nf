@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 
 // Santa's Present Pipeline 🎅
-// Run with: nextflow run christmas_pipeline.nf
+// Run with: nextflow run christmas_pipeline.nf --reindeer [your guess]
 
 process PREPARE_SLEIGH {
     debug true
@@ -46,16 +46,16 @@ process DELIVER_PRESENTS {
     echo "🗺️  Calculating optimal present delivery route..."
     echo "🌟 Running nextflow magic algorithms..."
     echo "🦌 Reindeer power optimization complete!"
-    echo "🎅 Here's your present:"
+    echo "🎅 Here's your special Nextflow present:"
     echo "🎁 The next secret key is: MerryNextChristmas"
     """
 }
 
 // Main workflow
 workflow {
-    // Define valid reindeer list (encoded to keep the magic alive! 🎄)
+    // Define valid reindeer (encoded to keep the magic alive! 🎄)
     params.reindeer = null
-    def encoded_reindeer = "cnVkb2xwaCxkYXNoZXIsZGFuY2VyLHByYW5jZXIsdml4ZW4sY29tZXQsY3VwaWQsZG9ubmVyLGJsaXR6ZW4="
+    def encoded_reindeer = "cnVkb2xwaA=="
     def valid_reindeer = new String(encoded_reindeer.decodeBase64()).tokenize(',')
 
     // Input validation
