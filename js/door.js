@@ -195,6 +195,13 @@ class Door {
                     <a href="https://nf-co.re/taxprofiler" target="_blank" class="info-link">Learn More →</a>
                 `;
                 break;
+            case 17:
+                infoContent.innerHTML = `
+                    <h3>Nextflow Podcast</h3>
+                    <p>Listen to conversations about Nextflow, bioinformatics, and open source.</p>
+                    <a href="https://seqera.io/podcasts/" target="_blank" class="info-link">Listen Now →</a>
+                `;
+                break;
             // Add more cases for other days...
         }
         
