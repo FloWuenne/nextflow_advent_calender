@@ -202,6 +202,34 @@ class Door {
                     <a href="https://seqera.io/podcasts/" target="_blank" class="info-link">Listen Now →</a>
                 `;
                 break;
+            case 18:
+                infoContent.innerHTML = `
+                    <h3>nf-core/molkart</h3>
+                    <p>A Nextflow pipeline for molecular cartography data processing and analysis.</p>
+                    <a href="https://nf-co.re/molkart/1.0.0/" target="_blank" class="info-link">Learn More →</a>
+                `;
+                break;
+            case 19:
+                infoContent.innerHTML = `
+                    <h3>Seqera Containers</h3>
+                    <p>Build Docker and Singularity images from Conda and pip inside your browser.</p>
+                    <a href="https://seqera.io/containers/" target="_blank" class="info-link">Build Container →</a>
+                `;
+                break;
+            case 21:
+                infoContent.innerHTML = `
+                    <h3>Seqera AI</h3>
+                    <p>Ask Seqera AI to help you write and test your Nextflow code.</p>
+                    <a href="https://seqera.io/ask-ai/" target="_blank" class="info-link">Ask AI →</a>
+                `;
+                break;
+            case 22:
+                infoContent.innerHTML = `
+                    <h3>Seqera Pipelines</h3>
+                    <p>Easily add open-source pipelines to your Seqera Launchpad.</p>
+                    <a href="https://seqera.io/pipelines/" target="_blank" class="info-link">Learn More →</a>
+                `;
+                break;
             // Add more cases for other days...
         }
         
