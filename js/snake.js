@@ -193,7 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillStyle = '#FFD700';
             ctx.shadowColor = 'rgba(255, 215, 0, 0.5)';
             ctx.shadowBlur = 5;
-            const message = "🌟 SECRET PASSWORD: SantaFlowHoHoHo 🌟";
+
+            const encodedSecret = "U2FudGFGbG93SG9Ib0hv";
+            const message = `🌟 SECRET PASSWORD: ${atob(encodedSecret)} 🌟`;
             ctx.fillText(message, canvas.width/2, canvas.height/2 + 110);
         } else if (score >= 20) {
             ctx.font = '20px Arial';
