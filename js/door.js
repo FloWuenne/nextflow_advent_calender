@@ -37,6 +37,21 @@ class Door {
     }
 
     createElement() {
+        // Only create the hint once when the first door is created
+        if (this.number === 1 && !document.querySelector('.secret-hint')) {
+            const secretHint = document.createElement('p');
+            secretHint.className = 'secret-hint';
+            secretHint.innerHTML = '<strong>🎁 Hint:</strong> There is a secret hidden on this page. To discover it, click around and explore the page or become a "developer" 🔍✨';
+            
+            // Insert the hint after the h1 element
+            const header = document.querySelector('h1');
+            if (header) {
+                header.insertAdjacentElement('afterend', secretHint);
+            } else {
+                document.body.insertBefore(secretHint, document.body.firstChild);
+            }
+        }
+
         const door = document.createElement('div');
         door.className = 'door';
         
@@ -223,11 +238,25 @@ class Door {
                     <a href="https://seqera.io/ask-ai/" target="_blank" class="info-link">Ask AI →</a>
                 `;
                 break;
+            case 21:
+                infoContent.innerHTML = `
+                    <h3>Community \Forum</h3>
+                    <p>Head to the Community forum to ask questions, share tips, and connect with Nextflow users!</p>
+                    <a href="https://community.seqera.io/" target="_blank" class="info-link">Join Community →</a>
+                `;
+                break;
             case 22:
                 infoContent.innerHTML = `
                     <h3>Seqera Pipelines</h3>
-                    <p>Easily add open-source pipelines to your Seqera Launchpad.</p>
+                    <p>Easily add teseted Nextflow pipelines to your Seqera Launchpad.</p>
                     <a href="https://seqera.io/pipelines/" target="_blank" class="info-link">Learn More →</a>
+                `;
+                break;
+            case 23:
+                infoContent.innerHTML = `
+                    <h3>multiqc</h3>
+                    <p>Aggregate results from 150+ bioinformatic tools into a single interactive report. Try <code>multiqc .</code></p>
+                    <a href="https://seqera.io/multiqc/" target="_blank" class="info-link">Explore MultiQC →</a>
                 `;
                 break;
             // Add more cases for other days...

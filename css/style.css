@@ -267,4 +267,21 @@ h1::after {
     line-height: 1.5;
     margin: 2rem 0;
 }
+
+.secret-hint {
+    text-align: center;
+    color: #0a907a; /* Darker shade of the header color (#0DC09D) */
+    font-size: 1.1em;
+    padding: 0.5rem 1rem;
+    margin: -1rem auto 2rem auto;
+    max-width: 800px;
+}
+
+@media (max-width: 768px) {
+    .secret-hint {
+        font-size: 0.9em;
+        padding: 0.5rem 2rem;
+        margin: -0.5rem auto 1.5rem auto;
+    }
+}
   
