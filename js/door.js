@@ -216,7 +216,7 @@ class Door {
                     <a href="https://seqera.io/containers/" target="_blank" class="info-link">Build Container →</a>
                 `;
                 break;
-            case 21:
+            case 20:
                 infoContent.innerHTML = `
                     <h3>Seqera AI</h3>
                     <p>Ask Seqera AI to help you write and test your Nextflow code.</p>
