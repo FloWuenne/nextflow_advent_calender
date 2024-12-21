@@ -259,6 +259,13 @@ class Door {
                     <a href="https://seqera.io/multiqc/" target="_blank" class="info-link">Explore MultiQC →</a>
                 `;
                 break;
+            case 24:
+                infoContent.innerHTML = `
+                    <h3>Community</h3>
+                    <p>The best part about Nextflow are the amazing people!</p>
+                    <a href="merry_christmas.html" target="_blank" class="info-link">Happy Holidays!  →</a>
+                `;
+                break;
             // Add more cases for other days...
         }
         
