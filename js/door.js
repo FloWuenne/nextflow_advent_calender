@@ -248,7 +248,7 @@ class Door {
             case 22:
                 infoContent.innerHTML = `
                     <h3>Seqera Pipelines</h3>
-                    <p>Easily add teseted Nextflow pipelines to your Seqera Launchpad.</p>
+                    <p>Easily add from a curated collection of Nextflow pipelines to your Seqera Launchpad.</p>
                     <a href="https://seqera.io/pipelines/" target="_blank" class="info-link">Learn More →</a>
                 `;
                 break;
@@ -262,9 +262,38 @@ class Door {
             case 24:
                 infoContent.innerHTML = `
                     <h3>Community</h3>
-                    <p>The best part about Nextflow are the amazing people!</p>
-                    <a href="merry_christmas.html" target="_blank" class="info-link">Happy Holidays!  →</a>
+                    <p>The best part about Nextflow is the amazing community!</p>
+                    <a href="merry_christmas.html" class="info-link">Happy Holidays!  →</a>
                 `;
+                
+                // Create Christmas lights containers
+                const topLightsContainer = document.createElement('div');
+                topLightsContainer.className = 'christmas-lights top-lights';
+                
+                const bottomLightsContainer = document.createElement('div');
+                bottomLightsContainer.className = 'christmas-lights bottom-lights';
+                
+                // Create 8 lights for each container
+                for (let i = 0; i < 8; i++) {
+                    const topLight = document.createElement('div');
+                    topLight.className = 'light';
+                    const bottomLight = document.createElement('div');
+                    bottomLight.className = 'light';
+                    
+                    // Alternate between red and green
+                    const color = i % 2 === 0 ? 'red' : 'green';
+                    topLight.classList.add(color);
+                    
+                    // Offset the bottom lights pattern by starting with green
+                    const bottomColor = i % 2 === 0 ? 'green' : 'red';
+                    bottomLight.classList.add(bottomColor);
+                    
+                    topLightsContainer.appendChild(topLight);
+                    bottomLightsContainer.appendChild(bottomLight);
+                }
+                
+                back.appendChild(topLightsContainer);
+                back.appendChild(bottomLightsContainer);
                 break;
             // Add more cases for other days...
         }
@@ -280,6 +309,11 @@ class Door {
         const image = document.createElement('img');
         image.src = `assets/day${this.number}_surprise.png`;
         image.alt = `Surprise for day ${this.number}`;
+        
+        // Add margin-top to the image if it's day 24 to make room for lights
+        if (this.number === 24) {
+            image.style.marginTop = '25px';
+        }
         
         image.onerror = () => {
             console.error(`Failed to load image for day ${this.number}`);

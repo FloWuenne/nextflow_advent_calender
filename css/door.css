@@ -79,6 +79,8 @@
     max-width: 100%;
     height: auto;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .door-back img:hover {
@@ -256,4 +258,68 @@
     color: #1a1a1a;
     transform: translateY(-2px);
     box-shadow: 0 2px 8px rgba(13, 192, 157, 0.3);
+}
+
+/* Christmas lights styles */
+.christmas-lights {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 10px;
+    z-index: 2;
+}
+
+.christmas-lights.top-lights {
+    top: 0;
+}
+
+.christmas-lights.bottom-lights {
+    bottom: 0;
+}
+
+.light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: relative;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.light::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    width: 2px;
+    height: 6px;
+    background: #333;
+    transform: translateX(-50%);
+}
+
+.light.red { 
+    background-color: #ff4444; 
+    box-shadow: 0 0 10px #ff4444; 
+}
+.light.green { 
+    background-color: #44ff44; 
+    box-shadow: 0 0 10px #44ff44; 
+}
+
+/* Alternating animation delay for lights */
+.light:nth-child(odd) {
+    animation-delay: 0.5s;
+}
+
+@keyframes glow {
+    from {
+        opacity: 0.7;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.05);
+    }
 } 
