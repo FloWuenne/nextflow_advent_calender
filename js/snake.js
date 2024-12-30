@@ -63,6 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Start music on first movement input
+        if (!isMusicPlaying && (
+            e.key === 'ArrowUp' || e.key === 'w' ||
+            e.key === 'ArrowDown' || e.key === 's' ||
+            e.key === 'ArrowLeft' || e.key === 'a' ||
+            e.key === 'ArrowRight' || e.key === 'd'
+        )) {
+            startMusic();
+        }
+
         switch(e.key) {
             case 'ArrowUp':
             case 'w':
@@ -153,6 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
         gameActive = false;
         gameOverScreen = true;
         clearInterval(gameLoop);
+        if (isMusicPlaying) {
+            backgroundMusic.pause();
+            musicButton.textContent = '🔇';
+            isMusicPlaying = false;
+        }
         drawGameOver();
     }
 
@@ -241,7 +256,55 @@ document.addEventListener('DOMContentLoaded', () => {
         if (gameLoop) clearInterval(gameLoop);
         gameLoop = setInterval(moveSnake, tickRate);
         requestAnimationFrame(update);
+
+        // Restart music if it was playing before
+        if (isMusicPlaying) {
+            startMusic();
+        }
     }
+
+    // Add music controls
+    const musicButton = document.createElement('button');
+    musicButton.textContent = '🔇';
+    musicButton.className = 'music-button';
+    const musicControls = document.createElement('div');
+    musicControls.className = 'music-controls';
+    musicControls.appendChild(musicButton);
+    document.querySelector('.game-container').appendChild(musicControls);
+
+    // Add audio element
+    const backgroundMusic = document.createElement('audio');
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = 0.3;
+    const source = document.createElement('source');
+    source.src = 'assets/serpentine_sleigh_ride.mp3';
+    source.type = 'audio/mp3';
+    backgroundMusic.appendChild(source);
+    document.body.appendChild(backgroundMusic);
+
+    // Music control functionality
+    let isMusicPlaying = false;
+
+    const startMusic = () => {
+        backgroundMusic.play().then(() => {
+            isMusicPlaying = true;
+            musicButton.textContent = '🔊';
+        }).catch(error => {
+            console.log("Audio playback failed:", error);
+            isMusicPlaying = false;
+            musicButton.textContent = '🔇';
+        });
+    };
+
+    musicButton.addEventListener('click', () => {
+        if (isMusicPlaying) {
+            backgroundMusic.pause();
+            musicButton.textContent = '🔇';
+        } else {
+            startMusic();
+        }
+        isMusicPlaying = !isMusicPlaying;
+    });
 
     // Start the game when SVGs are loaded
     Promise.all([
